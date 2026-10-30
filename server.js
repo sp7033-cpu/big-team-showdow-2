@@ -3,6 +3,9 @@ import {createServer} from 'node:http';
 import {Server} from 'socket.io';
 import crypto from 'node:crypto';
 const app=express();const http=createServer(app);const io=new Server(http,{cors:{origin:false}});app.use(express.static('public'));
+app.get('/', (req, res) => {
+  res.sendFile('index.html', { root: process.cwd() });
+});
 const teams=['Blue Lightning','Green Giants','Red Rockets','Purple Power','Orange Ninjas','Yellow Sparks'];
 const questions=[
 ['Emoji Office','What workplace situation do these emojis represent? 📅📅📅😵',['Meeting overload','Annual leave','Project launch','Training day'],0],
